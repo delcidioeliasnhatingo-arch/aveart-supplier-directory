@@ -1,0 +1,14 @@
+{
+  "name": "aveart-supplier-directory-api",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Standalone AVEART supplier directory API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
