@@ -6,7 +6,8 @@
   "scripts": {
     "build": "medusa build",
     "start": "medusa start",
-    "dev": "medusa develop"
+    "dev": "medusa develop",
+    "predeploy": "medusa db:migrate"
   },
   "dependencies": {
     "@medusajs/admin-sdk": "2.21.2",
