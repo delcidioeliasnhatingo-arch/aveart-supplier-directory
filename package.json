@@ -20,7 +20,6 @@
     ]
   },
   "devDependencies": {
-    "@atomico/rollup-plugin-sizes": "^1.1.4",
     "@faker-js/faker": "^9.2.0",
     "@medusajs/eslint-plugin": "workspace:^",
     "@rollup/plugin-node-resolve": "^15.1.0",
