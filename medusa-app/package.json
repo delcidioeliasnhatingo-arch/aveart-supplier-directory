@@ -7,7 +7,7 @@
     "build": "medusa build",
     "start": "medusa start",
     "dev": "medusa develop",
-    "predeploy": "medusa db:migrate"
+    "predeploy": "medusa db:migrate && medusa user -e \"$ADMIN_EMAIL\" -p \"$ADMIN_PASSWORD\""
   },
   "dependencies": {
     "@medusajs/admin-sdk": "2.21.2",
