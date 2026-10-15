@@ -7,7 +7,7 @@
     "build": "medusa build",
     "start": "medusa start",
     "dev": "medusa develop",
-    "predeploy": "medusa db:migrate && medusa user -e \"$ADMIN_EMAIL\" -p \"$ADMIN_PASSWORD\""
+    "predeploy": "medusa db:migrate && (medusa user -e \"$ADMIN_EMAIL\" -p \"$ADMIN_PASSWORD\" || true)"
   },
   "dependencies": {
     "@medusajs/admin-sdk": "2.21.2",
@@ -20,7 +20,7 @@
     "typescript": "^5.6.2"
   },
   "engines": {
-    "node": ">=20.19.0"
+    "node": ">=22.15.0"
   },
   "packageManager": "npm@10.8.2"
 }
