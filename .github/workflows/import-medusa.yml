@@ -1,0 +1,38 @@
+name: Import Medusa source files
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/import-medusa.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout destination repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Clone Medusa fork
+        run: |
+          git clone --depth 1 --branch develop https://github.com/delcidioeliasnhatingo-arch/medusa.git /tmp/medusa
+
+      - name: Copy source files without changing their contents
+        run: |
+          rsync -a --delete --exclude='.git' --exclude='.github/workflows/***' /tmp/medusa/ ./
+          rm -rf .git
+          git init
+          git checkout -b main
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Import Medusa source files from develop"
+          git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          git push --force origin main
