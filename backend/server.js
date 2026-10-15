@@ -33,7 +33,7 @@ const server = http.createServer((req, res) => {
   }
 
   const url = new URL(req.url || "/", `http://${req.headers.host || "localhost"}`);
-  const path = url.pathname.replace(/\\/+$/, "") || "/";
+  const path = url.pathname.replace(/\/+$/, "") || "/";
 
   if (req.method !== "GET") {
     return send(res, 405, { error: "Method not allowed", allowedMethods: ["GET", "OPTIONS"] });
